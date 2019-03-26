@@ -3,31 +3,31 @@ Thermostat.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000009ae  00000000  00000000  00000094  2**1
+  0 .text         00000d20  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000000e  00800060  000009ae  00000a42  2**0
+  1 .data         00000028  00800060  00000d20  00000db4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000007  0080006e  0080006e  00000a50  2**0
+  2 .bss          00000009  00800088  00800088  00000ddc  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000a50  2**0
+  3 .comment      00000030  00000000  00000000  00000ddc  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000a80  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000e0c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000001a8  00000000  00000000  00000abc  2**0
+  5 .debug_aranges 000001f8  00000000  00000000  00000e48  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00002a66  00000000  00000000  00000c64  2**0
+  6 .debug_info   000031a7  00000000  00000000  00001040  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008fe  00000000  00000000  000036ca  2**0
+  7 .debug_abbrev 00000a31  00000000  00000000  000041e7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000eb6  00000000  00000000  00003fc8  2**0
+  8 .debug_line   00001155  00000000  00000000  00004c18  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000804  00000000  00000000  00004e80  2**2
+  9 .debug_frame  000008c8  00000000  00000000  00005d70  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000065b  00000000  00000000  00005684  2**0
+ 10 .debug_str    00000703  00000000  00000000  00006638  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00002fc0  00000000  00000000  00005cdf  2**0
+ 11 .debug_loc    000030f7  00000000  00000000  00006d3b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000178  00000000  00000000  00008c9f  2**0
+ 12 .debug_ranges 000001c8  00000000  00000000  00009e32  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -454,18 +454,18 @@ Disassembly of section .text:
  368:	10 e0       	ldi	r17, 0x00	; 0
  36a:	a0 e6       	ldi	r26, 0x60	; 96
  36c:	b0 e0       	ldi	r27, 0x00	; 0
- 36e:	ee ea       	ldi	r30, 0xAE	; 174
- 370:	f9 e0       	ldi	r31, 0x09	; 9
+ 36e:	e0 e2       	ldi	r30, 0x20	; 32
+ 370:	fd e0       	ldi	r31, 0x0D	; 13
  372:	02 c0       	rjmp	.+4      	; 0x378 <__do_copy_data+0x10>
  374:	05 90       	lpm	r0, Z+
  376:	0d 92       	st	X+, r0
- 378:	ae 36       	cpi	r26, 0x6E	; 110
+ 378:	a8 38       	cpi	r26, 0x88	; 136
  37a:	b1 07       	cpc	r27, r17
  37c:	d9 f7       	brne	.-10     	; 0x374 <__do_copy_data+0xc>
 
 0000037e <__do_clear_bss>:
  37e:	20 e0       	ldi	r18, 0x00	; 0
- 380:	ae e6       	ldi	r26, 0x6E	; 110
+ 380:	a8 e8       	ldi	r26, 0x88	; 136
  382:	b0 e0       	ldi	r27, 0x00	; 0
  384:	01 c0       	rjmp	.+2      	; 0x388 <.do_clear_bss_start>
 
@@ -473,11 +473,11 @@ Disassembly of section .text:
  386:	1d 92       	st	X+, r1
 
 00000388 <.do_clear_bss_start>:
- 388:	a5 37       	cpi	r26, 0x75	; 117
+ 388:	a1 39       	cpi	r26, 0x91	; 145
  38a:	b2 07       	cpc	r27, r18
  38c:	e1 f7       	brne	.-8      	; 0x386 <.do_clear_bss_loop>
- 38e:	0e 94 b8 04 	call	0x970	; 0x970 <main>
- 392:	0c 94 d5 04 	jmp	0x9aa	; 0x9aa <_exit>
+ 38e:	0e 94 5c 06 	call	0xcb8	; 0xcb8 <main>
+ 392:	0c 94 8e 06 	jmp	0xd1c	; 0xd1c <_exit>
 
 00000396 <__bad_interrupt>:
  396:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -530,7 +530,7 @@ Disassembly of section .text:
  3cc:	0e 94 cd 01 	call	0x39a	; 0x39a <glcd_cs_low>
  3d0:	8c 2f       	mov	r24, r28
  3d2:	90 e0       	ldi	r25, 0x00	; 0
- 3d4:	0e 94 d0 04 	call	0x9a0	; 0x9a0 <SPI_MasterTransmit>
+ 3d4:	0e 94 89 06 	call	0xd12	; 0xd12 <SPI_MasterTransmit>
  3d8:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <glcd_cs_high>
  3dc:	cf 91       	pop	r28
  3de:	08 95       	ret
@@ -542,7 +542,7 @@ Disassembly of section .text:
  3e8:	0e 94 cd 01 	call	0x39a	; 0x39a <glcd_cs_low>
  3ec:	8c 2f       	mov	r24, r28
  3ee:	90 e0       	ldi	r25, 0x00	; 0
- 3f0:	0e 94 d0 04 	call	0x9a0	; 0x9a0 <SPI_MasterTransmit>
+ 3f0:	0e 94 89 06 	call	0xd12	; 0xd12 <SPI_MasterTransmit>
  3f4:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <glcd_cs_high>
  3f8:	cf 91       	pop	r28
  3fa:	08 95       	ret
@@ -555,10 +555,10 @@ Disassembly of section .text:
  406:	0e 94 cd 01 	call	0x39a	; 0x39a <glcd_cs_low>
  40a:	8d 2f       	mov	r24, r29
  40c:	90 e0       	ldi	r25, 0x00	; 0
- 40e:	0e 94 d0 04 	call	0x9a0	; 0x9a0 <SPI_MasterTransmit>
+ 40e:	0e 94 89 06 	call	0xd12	; 0xd12 <SPI_MasterTransmit>
  412:	ce 01       	movw	r24, r28
  414:	99 27       	eor	r25, r25
- 416:	0e 94 d0 04 	call	0x9a0	; 0x9a0 <SPI_MasterTransmit>
+ 416:	0e 94 89 06 	call	0xd12	; 0xd12 <SPI_MasterTransmit>
  41a:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <glcd_cs_high>
  41e:	df 91       	pop	r29
  420:	cf 91       	pop	r28
@@ -603,28 +603,28 @@ Disassembly of section .text:
  472:	08 95       	ret
 
 00000474 <glcd_setOrientation>:
- 474:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <glcd_orientation>
+ 474:	80 93 8e 00 	sts	0x008E, r24	; 0x80008e <glcd_orientation>
  478:	81 11       	cpse	r24, r1
  47a:	0d c0       	rjmp	.+26     	; 0x496 <glcd_setOrientation+0x22>
  47c:	80 ef       	ldi	r24, 0xF0	; 240
  47e:	90 e0       	ldi	r25, 0x00	; 0
- 480:	90 93 71 00 	sts	0x0071, r25	; 0x800071 <max_x+0x1>
- 484:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <max_x>
+ 480:	90 93 8d 00 	sts	0x008D, r25	; 0x80008d <max_x+0x1>
+ 484:	80 93 8c 00 	sts	0x008C, r24	; 0x80008c <max_x>
  488:	80 e4       	ldi	r24, 0x40	; 64
  48a:	91 e0       	ldi	r25, 0x01	; 1
- 48c:	90 93 74 00 	sts	0x0074, r25	; 0x800074 <max_y+0x1>
- 490:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <max_y>
+ 48c:	90 93 90 00 	sts	0x0090, r25	; 0x800090 <max_y+0x1>
+ 490:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <max_y>
  494:	08 95       	ret
  496:	81 30       	cpi	r24, 0x01	; 1
  498:	61 f4       	brne	.+24     	; 0x4b2 <glcd_setOrientation+0x3e>
  49a:	80 e4       	ldi	r24, 0x40	; 64
  49c:	91 e0       	ldi	r25, 0x01	; 1
- 49e:	90 93 71 00 	sts	0x0071, r25	; 0x800071 <max_x+0x1>
- 4a2:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <max_x>
+ 49e:	90 93 8d 00 	sts	0x008D, r25	; 0x80008d <max_x+0x1>
+ 4a2:	80 93 8c 00 	sts	0x008C, r24	; 0x80008c <max_x>
  4a6:	80 ef       	ldi	r24, 0xF0	; 240
  4a8:	90 e0       	ldi	r25, 0x00	; 0
- 4aa:	90 93 74 00 	sts	0x0074, r25	; 0x800074 <max_y+0x1>
- 4ae:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <max_y>
+ 4aa:	90 93 90 00 	sts	0x0090, r25	; 0x800090 <max_y+0x1>
+ 4ae:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <max_y>
  4b2:	08 95       	ret
 
 000004b4 <glcd_hline>:
@@ -640,7 +640,7 @@ Disassembly of section .text:
  4c6:	eb 01       	movw	r28, r22
  4c8:	8a 01       	movw	r16, r20
  4ca:	79 01       	movw	r14, r18
- 4cc:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <glcd_orientation>
+ 4cc:	80 91 8e 00 	lds	r24, 0x008E	; 0x80008e <glcd_orientation>
  4d0:	81 11       	cpse	r24, r1
  4d2:	1a c0       	rjmp	.+52     	; 0x508 <glcd_hline+0x54>
  4d4:	b6 01       	movw	r22, r12
@@ -669,8 +669,8 @@ Disassembly of section .text:
  50a:	e9 f4       	brne	.+58     	; 0x546 <glcd_hline+0x92>
  50c:	cb 01       	movw	r24, r22
  50e:	0e 94 12 02 	call	0x424	; 0x424 <glcd_setX>
- 512:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <max_x>
- 516:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <max_x+0x1>
+ 512:	80 91 8c 00 	lds	r24, 0x008C	; 0x80008c <max_x>
+ 516:	90 91 8d 00 	lds	r25, 0x008D	; 0x80008d <max_x+0x1>
  51a:	8c 19       	sub	r24, r12
  51c:	9d 09       	sbc	r25, r13
  51e:	bc 01       	movw	r22, r24
@@ -700,636 +700,1086 @@ Disassembly of section .text:
  554:	cf 90       	pop	r12
  556:	08 95       	ret
 
-00000558 <glcd_fillRectangle>:
- 558:	af 92       	push	r10
- 55a:	bf 92       	push	r11
- 55c:	cf 92       	push	r12
- 55e:	df 92       	push	r13
- 560:	ef 92       	push	r14
- 562:	ff 92       	push	r15
- 564:	0f 93       	push	r16
- 566:	1f 93       	push	r17
- 568:	cf 93       	push	r28
- 56a:	df 93       	push	r29
- 56c:	21 15       	cp	r18, r1
- 56e:	31 05       	cpc	r19, r1
- 570:	81 f0       	breq	.+32     	; 0x592 <glcd_fillRectangle+0x3a>
- 572:	6a 01       	movw	r12, r20
- 574:	eb 01       	movw	r28, r22
- 576:	5c 01       	movw	r10, r24
- 578:	79 01       	movw	r14, r18
- 57a:	e6 0e       	add	r14, r22
- 57c:	f7 1e       	adc	r15, r23
- 57e:	98 01       	movw	r18, r16
- 580:	a6 01       	movw	r20, r12
- 582:	be 01       	movw	r22, r28
- 584:	c5 01       	movw	r24, r10
- 586:	0e 94 5a 02 	call	0x4b4	; 0x4b4 <glcd_hline>
- 58a:	21 96       	adiw	r28, 0x01	; 1
- 58c:	ec 16       	cp	r14, r28
- 58e:	fd 06       	cpc	r15, r29
- 590:	b1 f7       	brne	.-20     	; 0x57e <glcd_fillRectangle+0x26>
- 592:	df 91       	pop	r29
- 594:	cf 91       	pop	r28
- 596:	1f 91       	pop	r17
- 598:	0f 91       	pop	r16
- 59a:	ff 90       	pop	r15
- 59c:	ef 90       	pop	r14
- 59e:	df 90       	pop	r13
- 5a0:	cf 90       	pop	r12
- 5a2:	bf 90       	pop	r11
- 5a4:	af 90       	pop	r10
- 5a6:	08 95       	ret
+00000558 <glcd_vline>:
+ 558:	cf 92       	push	r12
+ 55a:	df 92       	push	r13
+ 55c:	ef 92       	push	r14
+ 55e:	ff 92       	push	r15
+ 560:	0f 93       	push	r16
+ 562:	1f 93       	push	r17
+ 564:	cf 93       	push	r28
+ 566:	df 93       	push	r29
+ 568:	6c 01       	movw	r12, r24
+ 56a:	eb 01       	movw	r28, r22
+ 56c:	8a 01       	movw	r16, r20
+ 56e:	79 01       	movw	r14, r18
+ 570:	80 91 8e 00 	lds	r24, 0x008E	; 0x80008e <glcd_orientation>
+ 574:	81 11       	cpse	r24, r1
+ 576:	1a c0       	rjmp	.+52     	; 0x5ac <glcd_vline+0x54>
+ 578:	b6 01       	movw	r22, r12
+ 57a:	c6 01       	movw	r24, r12
+ 57c:	0e 94 12 02 	call	0x424	; 0x424 <glcd_setX>
+ 580:	be 01       	movw	r22, r28
+ 582:	60 0f       	add	r22, r16
+ 584:	71 1f       	adc	r23, r17
+ 586:	ce 01       	movw	r24, r28
+ 588:	0e 94 26 02 	call	0x44c	; 0x44c <glcd_setY>
+ 58c:	8c e2       	ldi	r24, 0x2C	; 44
+ 58e:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 592:	01 15       	cp	r16, r1
+ 594:	11 05       	cpc	r17, r1
+ 596:	49 f1       	breq	.+82     	; 0x5ea <glcd_vline+0x92>
+ 598:	c0 e0       	ldi	r28, 0x00	; 0
+ 59a:	d0 e0       	ldi	r29, 0x00	; 0
+ 59c:	c7 01       	movw	r24, r14
+ 59e:	0e 94 fe 01 	call	0x3fc	; 0x3fc <glcd_sendData16>
+ 5a2:	21 96       	adiw	r28, 0x01	; 1
+ 5a4:	c0 17       	cp	r28, r16
+ 5a6:	d1 07       	cpc	r29, r17
+ 5a8:	c9 f7       	brne	.-14     	; 0x59c <glcd_vline+0x44>
+ 5aa:	1f c0       	rjmp	.+62     	; 0x5ea <glcd_vline+0x92>
+ 5ac:	81 30       	cpi	r24, 0x01	; 1
+ 5ae:	e9 f4       	brne	.+58     	; 0x5ea <glcd_vline+0x92>
+ 5b0:	64 0f       	add	r22, r20
+ 5b2:	75 1f       	adc	r23, r21
+ 5b4:	ce 01       	movw	r24, r28
+ 5b6:	0e 94 12 02 	call	0x424	; 0x424 <glcd_setX>
+ 5ba:	80 91 8c 00 	lds	r24, 0x008C	; 0x80008c <max_x>
+ 5be:	90 91 8d 00 	lds	r25, 0x008D	; 0x80008d <max_x+0x1>
+ 5c2:	8c 19       	sub	r24, r12
+ 5c4:	9d 09       	sbc	r25, r13
+ 5c6:	bc 01       	movw	r22, r24
+ 5c8:	0e 94 26 02 	call	0x44c	; 0x44c <glcd_setY>
+ 5cc:	8c e2       	ldi	r24, 0x2C	; 44
+ 5ce:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 5d2:	01 15       	cp	r16, r1
+ 5d4:	11 05       	cpc	r17, r1
+ 5d6:	49 f0       	breq	.+18     	; 0x5ea <glcd_vline+0x92>
+ 5d8:	c0 e0       	ldi	r28, 0x00	; 0
+ 5da:	d0 e0       	ldi	r29, 0x00	; 0
+ 5dc:	c7 01       	movw	r24, r14
+ 5de:	0e 94 fe 01 	call	0x3fc	; 0x3fc <glcd_sendData16>
+ 5e2:	21 96       	adiw	r28, 0x01	; 1
+ 5e4:	0c 17       	cp	r16, r28
+ 5e6:	1d 07       	cpc	r17, r29
+ 5e8:	c9 f7       	brne	.-14     	; 0x5dc <glcd_vline+0x84>
+ 5ea:	df 91       	pop	r29
+ 5ec:	cf 91       	pop	r28
+ 5ee:	1f 91       	pop	r17
+ 5f0:	0f 91       	pop	r16
+ 5f2:	ff 90       	pop	r15
+ 5f4:	ef 90       	pop	r14
+ 5f6:	df 90       	pop	r13
+ 5f8:	cf 90       	pop	r12
+ 5fa:	08 95       	ret
 
-000005a8 <glcd_char>:
- 5a8:	2f 92       	push	r2
- 5aa:	3f 92       	push	r3
- 5ac:	4f 92       	push	r4
- 5ae:	5f 92       	push	r5
- 5b0:	6f 92       	push	r6
- 5b2:	7f 92       	push	r7
- 5b4:	8f 92       	push	r8
- 5b6:	9f 92       	push	r9
- 5b8:	af 92       	push	r10
- 5ba:	bf 92       	push	r11
- 5bc:	cf 92       	push	r12
- 5be:	df 92       	push	r13
- 5c0:	ef 92       	push	r14
- 5c2:	ff 92       	push	r15
- 5c4:	0f 93       	push	r16
- 5c6:	1f 93       	push	r17
- 5c8:	cf 93       	push	r28
- 5ca:	df 93       	push	r29
- 5cc:	00 d0       	rcall	.+0      	; 0x5ce <glcd_char+0x26>
- 5ce:	00 d0       	rcall	.+0      	; 0x5d0 <glcd_char+0x28>
- 5d0:	cd b7       	in	r28, 0x3d	; 61
- 5d2:	de b7       	in	r29, 0x3e	; 62
- 5d4:	49 83       	std	Y+1, r20	; 0x01
- 5d6:	5a 83       	std	Y+2, r21	; 0x02
- 5d8:	69 01       	movw	r12, r18
- 5da:	28 01       	movw	r4, r16
- 5dc:	90 ee       	ldi	r25, 0xE0	; 224
- 5de:	98 0f       	add	r25, r24
- 5e0:	90 36       	cpi	r25, 0x60	; 96
- 5e2:	08 f0       	brcs	.+2      	; 0x5e6 <glcd_char+0x3e>
- 5e4:	8f e1       	ldi	r24, 0x1F	; 31
- 5e6:	28 2e       	mov	r2, r24
- 5e8:	31 2c       	mov	r3, r1
- 5ea:	c1 01       	movw	r24, r2
- 5ec:	88 0f       	add	r24, r24
- 5ee:	99 1f       	adc	r25, r25
- 5f0:	88 0f       	add	r24, r24
- 5f2:	99 1f       	adc	r25, r25
- 5f4:	88 0f       	add	r24, r24
- 5f6:	99 1f       	adc	r25, r25
- 5f8:	9c 01       	movw	r18, r24
- 5fa:	2c 5a       	subi	r18, 0xAC	; 172
- 5fc:	30 40       	sbci	r19, 0x00	; 0
- 5fe:	39 01       	movw	r6, r18
- 600:	c1 01       	movw	r24, r2
- 602:	88 0f       	add	r24, r24
- 604:	99 1f       	adc	r25, r25
- 606:	88 0f       	add	r24, r24
- 608:	99 1f       	adc	r25, r25
- 60a:	88 0f       	add	r24, r24
- 60c:	99 1f       	adc	r25, r25
- 60e:	fc 01       	movw	r30, r24
- 610:	e4 5a       	subi	r30, 0xA4	; 164
- 612:	f0 40       	sbci	r31, 0x00	; 0
- 614:	1f 01       	movw	r2, r30
- 616:	86 2e       	mov	r8, r22
- 618:	97 2e       	mov	r9, r23
- 61a:	f3 01       	movw	r30, r6
- 61c:	a4 90       	lpm	r10, Z
- 61e:	e9 80       	ldd	r14, Y+1	; 0x01
- 620:	fa 80       	ldd	r15, Y+2	; 0x02
- 622:	1c 82       	std	Y+4, r1	; 0x04
- 624:	1b 82       	std	Y+3, r1	; 0x03
- 626:	b1 2c       	mov	r11, r1
- 628:	c5 01       	movw	r24, r10
- 62a:	0b 80       	ldd	r0, Y+3	; 0x03
- 62c:	02 c0       	rjmp	.+4      	; 0x632 <glcd_char+0x8a>
- 62e:	95 95       	asr	r25
- 630:	87 95       	ror	r24
- 632:	0a 94       	dec	r0
- 634:	e2 f7       	brpl	.-8      	; 0x62e <glcd_char+0x86>
- 636:	80 ff       	sbrs	r24, 0
- 638:	07 c0       	rjmp	.+14     	; 0x648 <glcd_char+0xa0>
- 63a:	82 01       	movw	r16, r4
- 63c:	96 01       	movw	r18, r12
- 63e:	a6 01       	movw	r20, r12
- 640:	b7 01       	movw	r22, r14
- 642:	c4 01       	movw	r24, r8
- 644:	0e 94 ac 02 	call	0x558	; 0x558 <glcd_fillRectangle>
- 648:	2b 81       	ldd	r18, Y+3	; 0x03
- 64a:	3c 81       	ldd	r19, Y+4	; 0x04
- 64c:	2f 5f       	subi	r18, 0xFF	; 255
- 64e:	3f 4f       	sbci	r19, 0xFF	; 255
- 650:	3c 83       	std	Y+4, r19	; 0x04
- 652:	2b 83       	std	Y+3, r18	; 0x03
- 654:	ec 0c       	add	r14, r12
- 656:	fd 1c       	adc	r15, r13
- 658:	28 30       	cpi	r18, 0x08	; 8
- 65a:	31 05       	cpc	r19, r1
- 65c:	29 f7       	brne	.-54     	; 0x628 <glcd_char+0x80>
- 65e:	3f ef       	ldi	r19, 0xFF	; 255
- 660:	63 1a       	sub	r6, r19
- 662:	73 0a       	sbc	r7, r19
- 664:	8c 0c       	add	r8, r12
- 666:	9d 1c       	adc	r9, r13
- 668:	62 14       	cp	r6, r2
- 66a:	73 04       	cpc	r7, r3
- 66c:	b1 f6       	brne	.-84     	; 0x61a <glcd_char+0x72>
- 66e:	0f 90       	pop	r0
- 670:	0f 90       	pop	r0
- 672:	0f 90       	pop	r0
- 674:	0f 90       	pop	r0
- 676:	df 91       	pop	r29
- 678:	cf 91       	pop	r28
- 67a:	1f 91       	pop	r17
- 67c:	0f 91       	pop	r16
- 67e:	ff 90       	pop	r15
- 680:	ef 90       	pop	r14
- 682:	df 90       	pop	r13
- 684:	cf 90       	pop	r12
- 686:	bf 90       	pop	r11
- 688:	af 90       	pop	r10
- 68a:	9f 90       	pop	r9
- 68c:	8f 90       	pop	r8
- 68e:	7f 90       	pop	r7
- 690:	6f 90       	pop	r6
- 692:	5f 90       	pop	r5
- 694:	4f 90       	pop	r4
- 696:	3f 90       	pop	r3
- 698:	2f 90       	pop	r2
- 69a:	08 95       	ret
+000005fc <glcd_rectangle>:
+ 5fc:	af 92       	push	r10
+ 5fe:	bf 92       	push	r11
+ 600:	cf 92       	push	r12
+ 602:	df 92       	push	r13
+ 604:	ef 92       	push	r14
+ 606:	ff 92       	push	r15
+ 608:	0f 93       	push	r16
+ 60a:	1f 93       	push	r17
+ 60c:	cf 93       	push	r28
+ 60e:	df 93       	push	r29
+ 610:	ec 01       	movw	r28, r24
+ 612:	7b 01       	movw	r14, r22
+ 614:	6a 01       	movw	r12, r20
+ 616:	59 01       	movw	r10, r18
+ 618:	98 01       	movw	r18, r16
+ 61a:	0e 94 5a 02 	call	0x4b4	; 0x4b4 <glcd_hline>
+ 61e:	b7 01       	movw	r22, r14
+ 620:	6a 0d       	add	r22, r10
+ 622:	7b 1d       	adc	r23, r11
+ 624:	98 01       	movw	r18, r16
+ 626:	a6 01       	movw	r20, r12
+ 628:	ce 01       	movw	r24, r28
+ 62a:	0e 94 5a 02 	call	0x4b4	; 0x4b4 <glcd_hline>
+ 62e:	98 01       	movw	r18, r16
+ 630:	a5 01       	movw	r20, r10
+ 632:	b7 01       	movw	r22, r14
+ 634:	ce 01       	movw	r24, r28
+ 636:	0e 94 ac 02 	call	0x558	; 0x558 <glcd_vline>
+ 63a:	98 01       	movw	r18, r16
+ 63c:	a5 01       	movw	r20, r10
+ 63e:	b7 01       	movw	r22, r14
+ 640:	ce 01       	movw	r24, r28
+ 642:	8c 0d       	add	r24, r12
+ 644:	9d 1d       	adc	r25, r13
+ 646:	0e 94 ac 02 	call	0x558	; 0x558 <glcd_vline>
+ 64a:	df 91       	pop	r29
+ 64c:	cf 91       	pop	r28
+ 64e:	1f 91       	pop	r17
+ 650:	0f 91       	pop	r16
+ 652:	ff 90       	pop	r15
+ 654:	ef 90       	pop	r14
+ 656:	df 90       	pop	r13
+ 658:	cf 90       	pop	r12
+ 65a:	bf 90       	pop	r11
+ 65c:	af 90       	pop	r10
+ 65e:	08 95       	ret
 
-0000069c <glcd_string>:
- 69c:	6f 92       	push	r6
- 69e:	7f 92       	push	r7
- 6a0:	8f 92       	push	r8
- 6a2:	9f 92       	push	r9
- 6a4:	af 92       	push	r10
- 6a6:	bf 92       	push	r11
- 6a8:	cf 92       	push	r12
- 6aa:	df 92       	push	r13
- 6ac:	ef 92       	push	r14
- 6ae:	ff 92       	push	r15
- 6b0:	0f 93       	push	r16
- 6b2:	1f 93       	push	r17
- 6b4:	cf 93       	push	r28
- 6b6:	df 93       	push	r29
- 6b8:	eb 01       	movw	r28, r22
- 6ba:	5a 01       	movw	r10, r20
- 6bc:	69 01       	movw	r12, r18
- 6be:	38 01       	movw	r6, r16
- 6c0:	49 01       	movw	r8, r18
- 6c2:	88 0c       	add	r8, r8
- 6c4:	99 1c       	adc	r9, r9
- 6c6:	82 0e       	add	r8, r18
- 6c8:	93 1e       	adc	r9, r19
- 6ca:	88 0c       	add	r8, r8
- 6cc:	99 1c       	adc	r9, r9
- 6ce:	7c 01       	movw	r14, r24
- 6d0:	0b c0       	rjmp	.+22     	; 0x6e8 <glcd_string+0x4c>
- 6d2:	83 01       	movw	r16, r6
- 6d4:	96 01       	movw	r18, r12
- 6d6:	a5 01       	movw	r20, r10
- 6d8:	be 01       	movw	r22, r28
- 6da:	0e 94 d4 02 	call	0x5a8	; 0x5a8 <glcd_char>
- 6de:	cf 3e       	cpi	r28, 0xEF	; 239
- 6e0:	d1 05       	cpc	r29, r1
- 6e2:	10 f4       	brcc	.+4      	; 0x6e8 <glcd_string+0x4c>
- 6e4:	c8 0d       	add	r28, r8
- 6e6:	d9 1d       	adc	r29, r9
- 6e8:	f7 01       	movw	r30, r14
- 6ea:	81 91       	ld	r24, Z+
- 6ec:	7f 01       	movw	r14, r30
- 6ee:	81 11       	cpse	r24, r1
- 6f0:	f0 cf       	rjmp	.-32     	; 0x6d2 <glcd_string+0x36>
- 6f2:	df 91       	pop	r29
- 6f4:	cf 91       	pop	r28
- 6f6:	1f 91       	pop	r17
- 6f8:	0f 91       	pop	r16
- 6fa:	ff 90       	pop	r15
- 6fc:	ef 90       	pop	r14
- 6fe:	df 90       	pop	r13
- 700:	cf 90       	pop	r12
- 702:	bf 90       	pop	r11
- 704:	af 90       	pop	r10
- 706:	9f 90       	pop	r9
- 708:	8f 90       	pop	r8
- 70a:	7f 90       	pop	r7
- 70c:	6f 90       	pop	r6
- 70e:	08 95       	ret
+00000660 <glcd_fillRectangle>:
+ 660:	af 92       	push	r10
+ 662:	bf 92       	push	r11
+ 664:	cf 92       	push	r12
+ 666:	df 92       	push	r13
+ 668:	ef 92       	push	r14
+ 66a:	ff 92       	push	r15
+ 66c:	0f 93       	push	r16
+ 66e:	1f 93       	push	r17
+ 670:	cf 93       	push	r28
+ 672:	df 93       	push	r29
+ 674:	21 15       	cp	r18, r1
+ 676:	31 05       	cpc	r19, r1
+ 678:	81 f0       	breq	.+32     	; 0x69a <glcd_fillRectangle+0x3a>
+ 67a:	6a 01       	movw	r12, r20
+ 67c:	eb 01       	movw	r28, r22
+ 67e:	5c 01       	movw	r10, r24
+ 680:	79 01       	movw	r14, r18
+ 682:	e6 0e       	add	r14, r22
+ 684:	f7 1e       	adc	r15, r23
+ 686:	98 01       	movw	r18, r16
+ 688:	a6 01       	movw	r20, r12
+ 68a:	be 01       	movw	r22, r28
+ 68c:	c5 01       	movw	r24, r10
+ 68e:	0e 94 5a 02 	call	0x4b4	; 0x4b4 <glcd_hline>
+ 692:	21 96       	adiw	r28, 0x01	; 1
+ 694:	ec 16       	cp	r14, r28
+ 696:	fd 06       	cpc	r15, r29
+ 698:	b1 f7       	brne	.-20     	; 0x686 <glcd_fillRectangle+0x26>
+ 69a:	df 91       	pop	r29
+ 69c:	cf 91       	pop	r28
+ 69e:	1f 91       	pop	r17
+ 6a0:	0f 91       	pop	r16
+ 6a2:	ff 90       	pop	r15
+ 6a4:	ef 90       	pop	r14
+ 6a6:	df 90       	pop	r13
+ 6a8:	cf 90       	pop	r12
+ 6aa:	bf 90       	pop	r11
+ 6ac:	af 90       	pop	r10
+ 6ae:	08 95       	ret
 
-00000710 <glcd_bg>:
+000006b0 <glcd_char>:
+ 6b0:	2f 92       	push	r2
+ 6b2:	3f 92       	push	r3
+ 6b4:	4f 92       	push	r4
+ 6b6:	5f 92       	push	r5
+ 6b8:	6f 92       	push	r6
+ 6ba:	7f 92       	push	r7
+ 6bc:	8f 92       	push	r8
+ 6be:	9f 92       	push	r9
+ 6c0:	af 92       	push	r10
+ 6c2:	bf 92       	push	r11
+ 6c4:	cf 92       	push	r12
+ 6c6:	df 92       	push	r13
+ 6c8:	ef 92       	push	r14
+ 6ca:	ff 92       	push	r15
+ 6cc:	0f 93       	push	r16
+ 6ce:	1f 93       	push	r17
+ 6d0:	cf 93       	push	r28
+ 6d2:	df 93       	push	r29
+ 6d4:	00 d0       	rcall	.+0      	; 0x6d6 <glcd_char+0x26>
+ 6d6:	00 d0       	rcall	.+0      	; 0x6d8 <glcd_char+0x28>
+ 6d8:	cd b7       	in	r28, 0x3d	; 61
+ 6da:	de b7       	in	r29, 0x3e	; 62
+ 6dc:	49 83       	std	Y+1, r20	; 0x01
+ 6de:	5a 83       	std	Y+2, r21	; 0x02
+ 6e0:	69 01       	movw	r12, r18
+ 6e2:	28 01       	movw	r4, r16
+ 6e4:	90 ee       	ldi	r25, 0xE0	; 224
+ 6e6:	98 0f       	add	r25, r24
+ 6e8:	90 36       	cpi	r25, 0x60	; 96
+ 6ea:	08 f0       	brcs	.+2      	; 0x6ee <glcd_char+0x3e>
+ 6ec:	8f e1       	ldi	r24, 0x1F	; 31
+ 6ee:	28 2e       	mov	r2, r24
+ 6f0:	31 2c       	mov	r3, r1
+ 6f2:	c1 01       	movw	r24, r2
+ 6f4:	88 0f       	add	r24, r24
+ 6f6:	99 1f       	adc	r25, r25
+ 6f8:	88 0f       	add	r24, r24
+ 6fa:	99 1f       	adc	r25, r25
+ 6fc:	88 0f       	add	r24, r24
+ 6fe:	99 1f       	adc	r25, r25
+ 700:	9c 01       	movw	r18, r24
+ 702:	2c 5a       	subi	r18, 0xAC	; 172
+ 704:	30 40       	sbci	r19, 0x00	; 0
+ 706:	39 01       	movw	r6, r18
+ 708:	c1 01       	movw	r24, r2
+ 70a:	88 0f       	add	r24, r24
+ 70c:	99 1f       	adc	r25, r25
+ 70e:	88 0f       	add	r24, r24
+ 710:	99 1f       	adc	r25, r25
+ 712:	88 0f       	add	r24, r24
+ 714:	99 1f       	adc	r25, r25
+ 716:	fc 01       	movw	r30, r24
+ 718:	e4 5a       	subi	r30, 0xA4	; 164
+ 71a:	f0 40       	sbci	r31, 0x00	; 0
+ 71c:	1f 01       	movw	r2, r30
+ 71e:	86 2e       	mov	r8, r22
+ 720:	97 2e       	mov	r9, r23
+ 722:	f3 01       	movw	r30, r6
+ 724:	a4 90       	lpm	r10, Z
+ 726:	e9 80       	ldd	r14, Y+1	; 0x01
+ 728:	fa 80       	ldd	r15, Y+2	; 0x02
+ 72a:	1c 82       	std	Y+4, r1	; 0x04
+ 72c:	1b 82       	std	Y+3, r1	; 0x03
+ 72e:	b1 2c       	mov	r11, r1
+ 730:	c5 01       	movw	r24, r10
+ 732:	0b 80       	ldd	r0, Y+3	; 0x03
+ 734:	02 c0       	rjmp	.+4      	; 0x73a <glcd_char+0x8a>
+ 736:	95 95       	asr	r25
+ 738:	87 95       	ror	r24
+ 73a:	0a 94       	dec	r0
+ 73c:	e2 f7       	brpl	.-8      	; 0x736 <glcd_char+0x86>
+ 73e:	80 ff       	sbrs	r24, 0
+ 740:	07 c0       	rjmp	.+14     	; 0x750 <glcd_char+0xa0>
+ 742:	82 01       	movw	r16, r4
+ 744:	96 01       	movw	r18, r12
+ 746:	a6 01       	movw	r20, r12
+ 748:	b7 01       	movw	r22, r14
+ 74a:	c4 01       	movw	r24, r8
+ 74c:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ 750:	2b 81       	ldd	r18, Y+3	; 0x03
+ 752:	3c 81       	ldd	r19, Y+4	; 0x04
+ 754:	2f 5f       	subi	r18, 0xFF	; 255
+ 756:	3f 4f       	sbci	r19, 0xFF	; 255
+ 758:	3c 83       	std	Y+4, r19	; 0x04
+ 75a:	2b 83       	std	Y+3, r18	; 0x03
+ 75c:	ec 0c       	add	r14, r12
+ 75e:	fd 1c       	adc	r15, r13
+ 760:	28 30       	cpi	r18, 0x08	; 8
+ 762:	31 05       	cpc	r19, r1
+ 764:	29 f7       	brne	.-54     	; 0x730 <glcd_char+0x80>
+ 766:	3f ef       	ldi	r19, 0xFF	; 255
+ 768:	63 1a       	sub	r6, r19
+ 76a:	73 0a       	sbc	r7, r19
+ 76c:	8c 0c       	add	r8, r12
+ 76e:	9d 1c       	adc	r9, r13
+ 770:	62 14       	cp	r6, r2
+ 772:	73 04       	cpc	r7, r3
+ 774:	b1 f6       	brne	.-84     	; 0x722 <glcd_char+0x72>
+ 776:	0f 90       	pop	r0
+ 778:	0f 90       	pop	r0
+ 77a:	0f 90       	pop	r0
+ 77c:	0f 90       	pop	r0
+ 77e:	df 91       	pop	r29
+ 780:	cf 91       	pop	r28
+ 782:	1f 91       	pop	r17
+ 784:	0f 91       	pop	r16
+ 786:	ff 90       	pop	r15
+ 788:	ef 90       	pop	r14
+ 78a:	df 90       	pop	r13
+ 78c:	cf 90       	pop	r12
+ 78e:	bf 90       	pop	r11
+ 790:	af 90       	pop	r10
+ 792:	9f 90       	pop	r9
+ 794:	8f 90       	pop	r8
+ 796:	7f 90       	pop	r7
+ 798:	6f 90       	pop	r6
+ 79a:	5f 90       	pop	r5
+ 79c:	4f 90       	pop	r4
+ 79e:	3f 90       	pop	r3
+ 7a0:	2f 90       	pop	r2
+ 7a2:	08 95       	ret
+
+000007a4 <glcd_string>:
+ 7a4:	6f 92       	push	r6
+ 7a6:	7f 92       	push	r7
+ 7a8:	8f 92       	push	r8
+ 7aa:	9f 92       	push	r9
+ 7ac:	af 92       	push	r10
+ 7ae:	bf 92       	push	r11
+ 7b0:	cf 92       	push	r12
+ 7b2:	df 92       	push	r13
+ 7b4:	ef 92       	push	r14
+ 7b6:	ff 92       	push	r15
+ 7b8:	0f 93       	push	r16
+ 7ba:	1f 93       	push	r17
+ 7bc:	cf 93       	push	r28
+ 7be:	df 93       	push	r29
+ 7c0:	eb 01       	movw	r28, r22
+ 7c2:	5a 01       	movw	r10, r20
+ 7c4:	69 01       	movw	r12, r18
+ 7c6:	38 01       	movw	r6, r16
+ 7c8:	49 01       	movw	r8, r18
+ 7ca:	88 0c       	add	r8, r8
+ 7cc:	99 1c       	adc	r9, r9
+ 7ce:	82 0e       	add	r8, r18
+ 7d0:	93 1e       	adc	r9, r19
+ 7d2:	88 0c       	add	r8, r8
+ 7d4:	99 1c       	adc	r9, r9
+ 7d6:	7c 01       	movw	r14, r24
+ 7d8:	0b c0       	rjmp	.+22     	; 0x7f0 <glcd_string+0x4c>
+ 7da:	83 01       	movw	r16, r6
+ 7dc:	96 01       	movw	r18, r12
+ 7de:	a5 01       	movw	r20, r10
+ 7e0:	be 01       	movw	r22, r28
+ 7e2:	0e 94 58 03 	call	0x6b0	; 0x6b0 <glcd_char>
+ 7e6:	cf 3e       	cpi	r28, 0xEF	; 239
+ 7e8:	d1 05       	cpc	r29, r1
+ 7ea:	10 f4       	brcc	.+4      	; 0x7f0 <glcd_string+0x4c>
+ 7ec:	c8 0d       	add	r28, r8
+ 7ee:	d9 1d       	adc	r29, r9
+ 7f0:	f7 01       	movw	r30, r14
+ 7f2:	81 91       	ld	r24, Z+
+ 7f4:	7f 01       	movw	r14, r30
+ 7f6:	81 11       	cpse	r24, r1
+ 7f8:	f0 cf       	rjmp	.-32     	; 0x7da <glcd_string+0x36>
+ 7fa:	df 91       	pop	r29
+ 7fc:	cf 91       	pop	r28
+ 7fe:	1f 91       	pop	r17
+ 800:	0f 91       	pop	r16
+ 802:	ff 90       	pop	r15
+ 804:	ef 90       	pop	r14
+ 806:	df 90       	pop	r13
+ 808:	cf 90       	pop	r12
+ 80a:	bf 90       	pop	r11
+ 80c:	af 90       	pop	r10
+ 80e:	9f 90       	pop	r9
+ 810:	8f 90       	pop	r8
+ 812:	7f 90       	pop	r7
+ 814:	6f 90       	pop	r6
+ 816:	08 95       	ret
+
+00000818 <glcd_bg>:
 
 void glcd_bg(unsigned int color)
 {
- 710:	0f 93       	push	r16
- 712:	1f 93       	push	r17
+ 818:	0f 93       	push	r16
+ 81a:	1f 93       	push	r17
 	glcd_fillRectangle(0,0,max_x,max_y,color);
- 714:	20 91 73 00 	lds	r18, 0x0073	; 0x800073 <max_y>
- 718:	30 91 74 00 	lds	r19, 0x0074	; 0x800074 <max_y+0x1>
- 71c:	40 91 70 00 	lds	r20, 0x0070	; 0x800070 <max_x>
- 720:	50 91 71 00 	lds	r21, 0x0071	; 0x800071 <max_x+0x1>
- 724:	8c 01       	movw	r16, r24
- 726:	60 e0       	ldi	r22, 0x00	; 0
- 728:	70 e0       	ldi	r23, 0x00	; 0
- 72a:	80 e0       	ldi	r24, 0x00	; 0
- 72c:	90 e0       	ldi	r25, 0x00	; 0
- 72e:	0e 94 ac 02 	call	0x558	; 0x558 <glcd_fillRectangle>
+ 81c:	20 91 8f 00 	lds	r18, 0x008F	; 0x80008f <max_y>
+ 820:	30 91 90 00 	lds	r19, 0x0090	; 0x800090 <max_y+0x1>
+ 824:	40 91 8c 00 	lds	r20, 0x008C	; 0x80008c <max_x>
+ 828:	50 91 8d 00 	lds	r21, 0x008D	; 0x80008d <max_x+0x1>
+ 82c:	8c 01       	movw	r16, r24
+ 82e:	60 e0       	ldi	r22, 0x00	; 0
+ 830:	70 e0       	ldi	r23, 0x00	; 0
+ 832:	80 e0       	ldi	r24, 0x00	; 0
+ 834:	90 e0       	ldi	r25, 0x00	; 0
+ 836:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
 }
- 732:	1f 91       	pop	r17
- 734:	0f 91       	pop	r16
- 736:	08 95       	ret
+ 83a:	1f 91       	pop	r17
+ 83c:	0f 91       	pop	r16
+ 83e:	08 95       	ret
 
-00000738 <glcd_init>:
+00000840 <glcd_init>:
 	glcd_cs_high();
 }
 
 void glcd_init(void)
 {
 	SPI_MasterInit();
- 738:	0e 94 c9 04 	call	0x992	; 0x992 <SPI_MasterInit>
+ 840:	0e 94 82 06 	call	0xd04	; 0xd04 <SPI_MasterInit>
 	glcd_cs_high();
- 73c:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <glcd_cs_high>
+ 844:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <glcd_cs_high>
 	glcd_dc_high();
- 740:	0e 94 d6 01 	call	0x3ac	; 0x3ac <glcd_dc_high>
+ 848:	0e 94 d6 01 	call	0x3ac	; 0x3ac <glcd_dc_high>
 
 	glcd_rst_on();
- 744:	0e 94 df 01 	call	0x3be	; 0x3be <glcd_rst_on>
+ 84c:	0e 94 df 01 	call	0x3be	; 0x3be <glcd_rst_on>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 748:	8f e1       	ldi	r24, 0x1F	; 31
- 74a:	9e e4       	ldi	r25, 0x4E	; 78
- 74c:	01 97       	sbiw	r24, 0x01	; 1
- 74e:	f1 f7       	brne	.-4      	; 0x74c <glcd_init+0x14>
- 750:	00 c0       	rjmp	.+0      	; 0x752 <glcd_init+0x1a>
- 752:	00 00       	nop
+ 850:	8f e1       	ldi	r24, 0x1F	; 31
+ 852:	9e e4       	ldi	r25, 0x4E	; 78
+ 854:	01 97       	sbiw	r24, 0x01	; 1
+ 856:	f1 f7       	brne	.-4      	; 0x854 <glcd_init+0x14>
+ 858:	00 c0       	rjmp	.+0      	; 0x85a <glcd_init+0x1a>
+ 85a:	00 00       	nop
 	_delay_ms(10);
 	glcd_rst_off();
- 754:	0e 94 dc 01 	call	0x3b8	; 0x3b8 <glcd_rst_off>
+ 85c:	0e 94 dc 01 	call	0x3b8	; 0x3b8 <glcd_rst_off>
 
 	glcd_setOrientation(PORTRAIT);	// default
- 758:	80 e0       	ldi	r24, 0x00	; 0
- 75a:	0e 94 3a 02 	call	0x474	; 0x474 <glcd_setOrientation>
+ 860:	80 e0       	ldi	r24, 0x00	; 0
+ 862:	0e 94 3a 02 	call	0x474	; 0x474 <glcd_setOrientation>
 
 	glcd_sendCmd(ILI9341_CMD_POWER_ON_SEQ_CONTROL);
- 75e:	8b ec       	ldi	r24, 0xCB	; 203
- 760:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 866:	8b ec       	ldi	r24, 0xCB	; 203
+ 868:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_IDLE_MODE_ON);
- 764:	89 e3       	ldi	r24, 0x39	; 57
- 766:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 86c:	89 e3       	ldi	r24, 0x39	; 57
+ 86e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_MEMORY_WRITE);
- 76a:	8c e2       	ldi	r24, 0x2C	; 44
- 76c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 872:	8c e2       	ldi	r24, 0x2C	; 44
+ 874:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_NOP);
- 770:	80 e0       	ldi	r24, 0x00	; 0
- 772:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 878:	80 e0       	ldi	r24, 0x00	; 0
+ 87a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_TEARING_EFFECT_LINE_OFF);
- 776:	84 e3       	ldi	r24, 0x34	; 52
- 778:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 87e:	84 e3       	ldi	r24, 0x34	; 52
+ 880:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x02); 	// XXX
- 77c:	82 e0       	ldi	r24, 0x02	; 2
- 77e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 884:	82 e0       	ldi	r24, 0x02	; 2
+ 886:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_POWER_CONTROL_B);
- 782:	8f ec       	ldi	r24, 0xCF	; 207
- 784:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 88a:	8f ec       	ldi	r24, 0xCF	; 207
+ 88c:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_NOP);
- 788:	80 e0       	ldi	r24, 0x00	; 0
- 78a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 890:	80 e0       	ldi	r24, 0x00	; 0
+ 892:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_POWER_CONTROL_2);
- 78e:	81 ec       	ldi	r24, 0xC1	; 193
- 790:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 896:	81 ec       	ldi	r24, 0xC1	; 193
+ 898:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_PARTIAL_AREA);
- 794:	80 e3       	ldi	r24, 0x30	; 48
- 796:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 89c:	80 e3       	ldi	r24, 0x30	; 48
+ 89e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_DRIVER_TIMING_CONTROL_A);
- 79a:	88 ee       	ldi	r24, 0xE8	; 232
- 79c:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 8a2:	88 ee       	ldi	r24, 0xE8	; 232
+ 8a4:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x85); 	// XXX
- 7a0:	85 e8       	ldi	r24, 0x85	; 133
- 7a2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8a8:	85 e8       	ldi	r24, 0x85	; 133
+ 8aa:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_NOP);
- 7a6:	80 e0       	ldi	r24, 0x00	; 0
- 7a8:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8ae:	80 e0       	ldi	r24, 0x00	; 0
+ 8b0:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x78); 	// XXX
- 7ac:	88 e7       	ldi	r24, 0x78	; 120
- 7ae:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8b4:	88 e7       	ldi	r24, 0x78	; 120
+ 8b6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_DRIVER_TIMING_CONTROL_B);
- 7b2:	8a ee       	ldi	r24, 0xEA	; 234
- 7b4:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 8ba:	8a ee       	ldi	r24, 0xEA	; 234
+ 8bc:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_NOP);
- 7b8:	80 e0       	ldi	r24, 0x00	; 0
- 7ba:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8c0:	80 e0       	ldi	r24, 0x00	; 0
+ 8c2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_NOP);
- 7be:	80 e0       	ldi	r24, 0x00	; 0
- 7c0:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8c6:	80 e0       	ldi	r24, 0x00	; 0
+ 8c8:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(0xED);	// XXX
- 7c4:	8d ee       	ldi	r24, 0xED	; 237
- 7c6:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 8cc:	8d ee       	ldi	r24, 0xED	; 237
+ 8ce:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x64); 	// XXX
- 7ca:	84 e6       	ldi	r24, 0x64	; 100
- 7cc:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8d2:	84 e6       	ldi	r24, 0x64	; 100
+ 8d4:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x03);	// XXX
- 7d0:	83 e0       	ldi	r24, 0x03	; 3
- 7d2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8d8:	83 e0       	ldi	r24, 0x03	; 3
+ 8da:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_PARTIAL_MODE_ON);
- 7d6:	82 e1       	ldi	r24, 0x12	; 18
- 7d8:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8de:	82 e1       	ldi	r24, 0x12	; 18
+ 8e0:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0X81); 	// XXX
- 7dc:	81 e8       	ldi	r24, 0x81	; 129
- 7de:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8e4:	81 e8       	ldi	r24, 0x81	; 129
+ 8e6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_PUMP_RATIO_CONTROL);
- 7e2:	87 ef       	ldi	r24, 0xF7	; 247
- 7e4:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 8ea:	87 ef       	ldi	r24, 0xF7	; 247
+ 8ec:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_DISP_INVERSION_OFF);
- 7e8:	80 e2       	ldi	r24, 0x20	; 32
- 7ea:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8f0:	80 e2       	ldi	r24, 0x20	; 32
+ 8f2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_POWER_CONTROL_1);
- 7ee:	80 ec       	ldi	r24, 0xC0	; 192
- 7f0:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 8f6:	80 ec       	ldi	r24, 0xC0	; 192
+ 8f8:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x23);	//VRH[5:0] 	// XXX
- 7f4:	83 e2       	ldi	r24, 0x23	; 35
- 7f6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 8fc:	83 e2       	ldi	r24, 0x23	; 35
+ 8fe:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_POWER_CONTROL_2);
- 7fa:	81 ec       	ldi	r24, 0xC1	; 193
- 7fc:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 902:	81 ec       	ldi	r24, 0xC1	; 193
+ 904:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_ENTER_SLEEP_MODE);
- 800:	80 e1       	ldi	r24, 0x10	; 16
- 802:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 908:	80 e1       	ldi	r24, 0x10	; 16
+ 90a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_VCOM_CONTROL_1);
- 806:	85 ec       	ldi	r24, 0xC5	; 197
- 808:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 90e:	85 ec       	ldi	r24, 0xC5	; 197
+ 910:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_READ_MEMORY_CONTINUE);
- 80c:	8e e3       	ldi	r24, 0x3E	; 62
- 80e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 914:	8e e3       	ldi	r24, 0x3E	; 62
+ 916:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_DISPLAY_OFF);
- 812:	88 e2       	ldi	r24, 0x28	; 40
- 814:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 91a:	88 e2       	ldi	r24, 0x28	; 40
+ 91c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_VCOM_CONTROL_2);
- 818:	87 ec       	ldi	r24, 0xC7	; 199
- 81a:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 920:	87 ec       	ldi	r24, 0xC7	; 199
+ 922:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x86);	//--	// XXX
- 81e:	86 e8       	ldi	r24, 0x86	; 134
- 820:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 926:	86 e8       	ldi	r24, 0x86	; 134
+ 928:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_MEMORY_ACCESS_CONTROL);
- 824:	86 e3       	ldi	r24, 0x36	; 54
- 826:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 92c:	86 e3       	ldi	r24, 0x36	; 54
+ 92e:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x48);	//C8	//48 68gal.gal.gal.//28 E8 gal.gal.gal.	// XXX
- 82a:	88 e4       	ldi	r24, 0x48	; 72
- 82c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 932:	88 e4       	ldi	r24, 0x48	; 72
+ 934:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_COLMOD_PIXEL_FORMAT_SET);
- 830:	8a e3       	ldi	r24, 0x3A	; 58
- 832:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 938:	8a e3       	ldi	r24, 0x3A	; 58
+ 93a:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_WRITE_CONTENT_ADAPT_BRIGHTNESS);
- 836:	85 e5       	ldi	r24, 0x55	; 85
- 838:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 93e:	85 e5       	ldi	r24, 0x55	; 85
+ 940:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_FRAME_RATE_CONTROL_NORMAL);
- 83c:	81 eb       	ldi	r24, 0xB1	; 177
- 83e:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 944:	81 eb       	ldi	r24, 0xB1	; 177
+ 946:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_NOP);
- 842:	80 e0       	ldi	r24, 0x00	; 0
- 844:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 94a:	80 e0       	ldi	r24, 0x00	; 0
+ 94c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x18); 	// XXX
- 848:	88 e1       	ldi	r24, 0x18	; 24
- 84a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 950:	88 e1       	ldi	r24, 0x18	; 24
+ 952:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_DISPLAY_FUNCTION_CONTROL);
- 84e:	86 eb       	ldi	r24, 0xB6	; 182
- 850:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 956:	86 eb       	ldi	r24, 0xB6	; 182
+ 958:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x08); 	// XXX
- 854:	88 e0       	ldi	r24, 0x08	; 8
- 856:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 95c:	88 e0       	ldi	r24, 0x08	; 8
+ 95e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x82);	// XXX
- 85a:	82 e8       	ldi	r24, 0x82	; 130
- 85c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 962:	82 e8       	ldi	r24, 0x82	; 130
+ 964:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x27);	// XXX
- 860:	87 e2       	ldi	r24, 0x27	; 39
- 862:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 968:	87 e2       	ldi	r24, 0x27	; 39
+ 96a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_ENABLE_3_GAMMA_CONTROL);
- 866:	82 ef       	ldi	r24, 0xF2	; 242
- 868:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 96e:	82 ef       	ldi	r24, 0xF2	; 242
+ 970:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_NOP);
- 86c:	80 e0       	ldi	r24, 0x00	; 0
- 86e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 974:	80 e0       	ldi	r24, 0x00	; 0
+ 976:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(0x26);	//Gamma curve selected 	// XXX
- 872:	86 e2       	ldi	r24, 0x26	; 38
- 874:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 97a:	86 e2       	ldi	r24, 0x26	; 38
+ 97c:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_SOFTWARE_RESET);
- 878:	81 e0       	ldi	r24, 0x01	; 1
- 87a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 980:	81 e0       	ldi	r24, 0x01	; 1
+ 982:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_POSITIVE_GAMMA_CORRECTION);
- 87e:	80 ee       	ldi	r24, 0xE0	; 224
- 880:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 986:	80 ee       	ldi	r24, 0xE0	; 224
+ 988:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(0x0F); 	// XXX
- 884:	8f e0       	ldi	r24, 0x0F	; 15
- 886:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 98c:	8f e0       	ldi	r24, 0x0F	; 15
+ 98e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x31);	// XXX
- 88a:	81 e3       	ldi	r24, 0x31	; 49
- 88c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 992:	81 e3       	ldi	r24, 0x31	; 49
+ 994:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_PAGE_ADDRESS_SET);
- 890:	8b e2       	ldi	r24, 0x2B	; 43
- 892:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 998:	8b e2       	ldi	r24, 0x2B	; 43
+ 99a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_PIXEL_FORMAT);
- 896:	8c e0       	ldi	r24, 0x0C	; 12
- 898:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 99e:	8c e0       	ldi	r24, 0x0C	; 12
+ 9a0:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_SIGNAL_MODE);
- 89c:	8e e0       	ldi	r24, 0x0E	; 14
- 89e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9a4:	8e e0       	ldi	r24, 0x0E	; 14
+ 9a6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x08); 	// XXX
- 8a2:	88 e0       	ldi	r24, 0x08	; 8
- 8a4:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9aa:	88 e0       	ldi	r24, 0x08	; 8
+ 9ac:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x4E); 	// XXX
- 8a8:	8e e4       	ldi	r24, 0x4E	; 78
- 8aa:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9b0:	8e e4       	ldi	r24, 0x4E	; 78
+ 9b2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0xF1); 	// XXX
- 8ae:	81 ef       	ldi	r24, 0xF1	; 241
- 8b0:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9b6:	81 ef       	ldi	r24, 0xF1	; 241
+ 9b8:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_VERT_SCROLL_START_ADDRESS);
- 8b4:	87 e3       	ldi	r24, 0x37	; 55
- 8b6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9bc:	87 e3       	ldi	r24, 0x37	; 55
+ 9be:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x07); 	// XXX
- 8ba:	87 e0       	ldi	r24, 0x07	; 7
- 8bc:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9c2:	87 e0       	ldi	r24, 0x07	; 7
+ 9c4:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_ENTER_SLEEP_MODE);
- 8c0:	80 e1       	ldi	r24, 0x10	; 16
- 8c2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9c8:	80 e1       	ldi	r24, 0x10	; 16
+ 9ca:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x03);	// XXX
- 8c6:	83 e0       	ldi	r24, 0x03	; 3
- 8c8:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9ce:	83 e0       	ldi	r24, 0x03	; 3
+ 9d0:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_SIGNAL_MODE);
- 8cc:	8e e0       	ldi	r24, 0x0E	; 14
- 8ce:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9d4:	8e e0       	ldi	r24, 0x0E	; 14
+ 9d6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_STATUS);
- 8d2:	89 e0       	ldi	r24, 0x09	; 9
- 8d4:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9da:	89 e0       	ldi	r24, 0x09	; 9
+ 9dc:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_NOP);
- 8d8:	80 e0       	ldi	r24, 0x00	; 0
- 8da:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9e0:	80 e0       	ldi	r24, 0x00	; 0
+ 9e2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_NEGATIVE_GAMMA_CORRECTION);
- 8de:	81 ee       	ldi	r24, 0xE1	; 225
- 8e0:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ 9e6:	81 ee       	ldi	r24, 0xE1	; 225
+ 9e8:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendData(ILI9341_CMD_NOP);
- 8e4:	80 e0       	ldi	r24, 0x00	; 0
- 8e6:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9ec:	80 e0       	ldi	r24, 0x00	; 0
+ 9ee:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_SIGNAL_MODE);
- 8ea:	8e e0       	ldi	r24, 0x0E	; 14
- 8ec:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9f2:	8e e0       	ldi	r24, 0x0E	; 14
+ 9f4:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x14); 	// XXX
- 8f0:	84 e1       	ldi	r24, 0x14	; 20
- 8f2:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9f8:	84 e1       	ldi	r24, 0x14	; 20
+ 9fa:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x03);	// XXX
- 8f6:	83 e0       	ldi	r24, 0x03	; 3
- 8f8:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ 9fe:	83 e0       	ldi	r24, 0x03	; 3
+ a00:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_SLEEP_OUT);
- 8fc:	81 e1       	ldi	r24, 0x11	; 17
- 8fe:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a04:	81 e1       	ldi	r24, 0x11	; 17
+ a06:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x07); 	// XXX
- 902:	87 e0       	ldi	r24, 0x07	; 7
- 904:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a0a:	87 e0       	ldi	r24, 0x07	; 7
+ a0c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x31); 	// XXX
- 908:	81 e3       	ldi	r24, 0x31	; 49
- 90a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a10:	81 e3       	ldi	r24, 0x31	; 49
+ a12:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_POWER_CONTROL_2);
- 90e:	81 ec       	ldi	r24, 0xC1	; 193
- 910:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a16:	81 ec       	ldi	r24, 0xC1	; 193
+ a18:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x48); 	// XXX
- 914:	88 e4       	ldi	r24, 0x48	; 72
- 916:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a1c:	88 e4       	ldi	r24, 0x48	; 72
+ a1e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x08); 	// XXX
- 91a:	88 e0       	ldi	r24, 0x08	; 8
- 91c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a22:	88 e0       	ldi	r24, 0x08	; 8
+ a24:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x0F); 	// XXX
- 920:	8f e0       	ldi	r24, 0x0F	; 15
- 922:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a28:	8f e0       	ldi	r24, 0x0F	; 15
+ a2a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_PIXEL_FORMAT);
- 926:	8c e0       	ldi	r24, 0x0C	; 12
- 928:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a2e:	8c e0       	ldi	r24, 0x0C	; 12
+ a30:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(0x31); 	// XXX
- 92c:	81 e3       	ldi	r24, 0x31	; 49
- 92e:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a34:	81 e3       	ldi	r24, 0x31	; 49
+ a36:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_MEMORY_ACCESS_CONTROL);
- 932:	86 e3       	ldi	r24, 0x36	; 54
- 934:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a3a:	86 e3       	ldi	r24, 0x36	; 54
+ a3c:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 	glcd_sendData(ILI9341_CMD_READ_DISP_SELF_DIAGNOSTIC);
- 938:	8f e0       	ldi	r24, 0x0F	; 15
- 93a:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
+ a40:	8f e0       	ldi	r24, 0x0F	; 15
+ a42:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <glcd_sendData>
 
 	glcd_sendCmd(ILI9341_CMD_SLEEP_OUT);
- 93e:	81 e1       	ldi	r24, 0x11	; 17
- 940:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
- 944:	9f ef       	ldi	r25, 0xFF	; 255
- 946:	2d ee       	ldi	r18, 0xED	; 237
- 948:	82 e0       	ldi	r24, 0x02	; 2
- 94a:	91 50       	subi	r25, 0x01	; 1
- 94c:	20 40       	sbci	r18, 0x00	; 0
- 94e:	80 40       	sbci	r24, 0x00	; 0
- 950:	e1 f7       	brne	.-8      	; 0x94a <__stack+0xeb>
- 952:	00 c0       	rjmp	.+0      	; 0x954 <__stack+0xf5>
- 954:	00 00       	nop
+ a46:	81 e1       	ldi	r24, 0x11	; 17
+ a48:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ a4c:	9f ef       	ldi	r25, 0xFF	; 255
+ a4e:	2d ee       	ldi	r18, 0xED	; 237
+ a50:	82 e0       	ldi	r24, 0x02	; 2
+ a52:	91 50       	subi	r25, 0x01	; 1
+ a54:	20 40       	sbci	r18, 0x00	; 0
+ a56:	80 40       	sbci	r24, 0x00	; 0
+ a58:	e1 f7       	brne	.-8      	; 0xa52 <__stack+0x1f3>
+ a5a:	00 c0       	rjmp	.+0      	; 0xa5c <__stack+0x1fd>
+ a5c:	00 00       	nop
 	_delay_ms(120);
 
 	glcd_sendCmd(ILI9341_CMD_DISPLAY_ON);
- 956:	89 e2       	ldi	r24, 0x29	; 41
- 958:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ a5e:	89 e2       	ldi	r24, 0x29	; 41
+ a60:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_sendCmd(ILI9341_CMD_MEMORY_WRITE);
- 95c:	8c e2       	ldi	r24, 0x2C	; 44
- 95e:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
+ a64:	8c e2       	ldi	r24, 0x2C	; 44
+ a66:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <glcd_sendCmd>
 	glcd_bg(bgcolor);
- 962:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <__data_end>
- 966:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <__data_end+0x1>
- 96a:	0e 94 88 03 	call	0x710	; 0x710 <glcd_bg>
- 96e:	08 95       	ret
+ a6a:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+ a6e:	90 91 89 00 	lds	r25, 0x0089	; 0x800089 <__data_end+0x1>
+ a72:	0e 94 0c 04 	call	0x818	; 0x818 <glcd_bg>
+ a76:	08 95       	ret
 
-00000970 <main>:
+00000a78 <init_lcd>:
 
-#include <avr/io.h>
+void display_calendar() {
+	
+}
+
+void display_launch() {
+ a78:	0e 94 20 04 	call	0x840	; 0x840 <glcd_init>
+ a7c:	0e 94 d9 01 	call	0x3b2	; 0x3b2 <glcd_led_on>
+ a80:	81 e0       	ldi	r24, 0x01	; 1
+ a82:	90 e0       	ldi	r25, 0x00	; 0
+ a84:	0e 94 3a 02 	call	0x474	; 0x474 <glcd_setOrientation>
+ a88:	08 95       	ret
+
+00000a8a <display_shell>:
+ a8a:	0f 93       	push	r16
+ a8c:	1f 93       	push	r17
+ a8e:	0f ef       	ldi	r16, 0xFF	; 255
+ a90:	1f ef       	ldi	r17, 0xFF	; 255
+ a92:	26 e9       	ldi	r18, 0x96	; 150
+ a94:	30 e0       	ldi	r19, 0x00	; 0
+ a96:	4c e2       	ldi	r20, 0x2C	; 44
+ a98:	51 e0       	ldi	r21, 0x01	; 1
+ a9a:	6a e0       	ldi	r22, 0x0A	; 10
+ a9c:	70 e0       	ldi	r23, 0x00	; 0
+ a9e:	8a e0       	ldi	r24, 0x0A	; 10
+ aa0:	90 e0       	ldi	r25, 0x00	; 0
+ aa2:	0e 94 fe 02 	call	0x5fc	; 0x5fc <glcd_rectangle>
+ aa6:	22 e3       	ldi	r18, 0x32	; 50
+ aa8:	30 e0       	ldi	r19, 0x00	; 0
+ aaa:	4c e2       	ldi	r20, 0x2C	; 44
+ aac:	51 e0       	ldi	r21, 0x01	; 1
+ aae:	6a ea       	ldi	r22, 0xAA	; 170
+ ab0:	70 e0       	ldi	r23, 0x00	; 0
+ ab2:	8a e0       	ldi	r24, 0x0A	; 10
+ ab4:	90 e0       	ldi	r25, 0x00	; 0
+ ab6:	0e 94 fe 02 	call	0x5fc	; 0x5fc <glcd_rectangle>
+ aba:	1f 91       	pop	r17
+ abc:	0f 91       	pop	r16
+ abe:	08 95       	ret
+
+00000ac0 <display_menu>:
+ ac0:	0f 93       	push	r16
+ ac2:	1f 93       	push	r17
+ ac4:	81 30       	cpi	r24, 0x01	; 1
+ ac6:	91 05       	cpc	r25, r1
+ ac8:	51 f1       	breq	.+84     	; 0xb1e <display_menu+0x5e>
+ aca:	82 30       	cpi	r24, 0x02	; 2
+ acc:	91 05       	cpc	r25, r1
+ ace:	09 f4       	brne	.+2      	; 0xad2 <display_menu+0x12>
+ ad0:	4b c0       	rjmp	.+150    	; 0xb68 <display_menu+0xa8>
+ ad2:	89 2b       	or	r24, r25
+ ad4:	09 f0       	breq	.+2      	; 0xad8 <display_menu+0x18>
+ ad6:	6a c0       	rjmp	.+212    	; 0xbac <display_menu+0xec>
+ ad8:	00 ee       	ldi	r16, 0xE0	; 224
+ ada:	17 e0       	ldi	r17, 0x07	; 7
+ adc:	28 e2       	ldi	r18, 0x28	; 40
+ ade:	30 e0       	ldi	r19, 0x00	; 0
+ ae0:	4c e3       	ldi	r20, 0x3C	; 60
+ ae2:	50 e0       	ldi	r21, 0x00	; 0
+ ae4:	6f ea       	ldi	r22, 0xAF	; 175
+ ae6:	70 e0       	ldi	r23, 0x00	; 0
+ ae8:	8f e0       	ldi	r24, 0x0F	; 15
+ aea:	90 e0       	ldi	r25, 0x00	; 0
+ aec:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ af0:	00 e0       	ldi	r16, 0x00	; 0
+ af2:	10 e0       	ldi	r17, 0x00	; 0
+ af4:	28 e2       	ldi	r18, 0x28	; 40
+ af6:	30 e0       	ldi	r19, 0x00	; 0
+ af8:	4e e6       	ldi	r20, 0x6E	; 110
+ afa:	50 e0       	ldi	r21, 0x00	; 0
+ afc:	6f ea       	ldi	r22, 0xAF	; 175
+ afe:	70 e0       	ldi	r23, 0x00	; 0
+ b00:	80 e5       	ldi	r24, 0x50	; 80
+ b02:	90 e0       	ldi	r25, 0x00	; 0
+ b04:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b08:	28 e2       	ldi	r18, 0x28	; 40
+ b0a:	30 e0       	ldi	r19, 0x00	; 0
+ b0c:	44 e6       	ldi	r20, 0x64	; 100
+ b0e:	50 e0       	ldi	r21, 0x00	; 0
+ b10:	6f ea       	ldi	r22, 0xAF	; 175
+ b12:	70 e0       	ldi	r23, 0x00	; 0
+ b14:	83 ec       	ldi	r24, 0xC3	; 195
+ b16:	90 e0       	ldi	r25, 0x00	; 0
+ b18:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b1c:	47 c0       	rjmp	.+142    	; 0xbac <display_menu+0xec>
+ b1e:	00 e0       	ldi	r16, 0x00	; 0
+ b20:	10 e0       	ldi	r17, 0x00	; 0
+ b22:	28 e2       	ldi	r18, 0x28	; 40
+ b24:	30 e0       	ldi	r19, 0x00	; 0
+ b26:	4c e3       	ldi	r20, 0x3C	; 60
+ b28:	50 e0       	ldi	r21, 0x00	; 0
+ b2a:	6f ea       	ldi	r22, 0xAF	; 175
+ b2c:	70 e0       	ldi	r23, 0x00	; 0
+ b2e:	8f e0       	ldi	r24, 0x0F	; 15
+ b30:	90 e0       	ldi	r25, 0x00	; 0
+ b32:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b36:	00 ee       	ldi	r16, 0xE0	; 224
+ b38:	17 e0       	ldi	r17, 0x07	; 7
+ b3a:	28 e2       	ldi	r18, 0x28	; 40
+ b3c:	30 e0       	ldi	r19, 0x00	; 0
+ b3e:	4e e6       	ldi	r20, 0x6E	; 110
+ b40:	50 e0       	ldi	r21, 0x00	; 0
+ b42:	6f ea       	ldi	r22, 0xAF	; 175
+ b44:	70 e0       	ldi	r23, 0x00	; 0
+ b46:	80 e5       	ldi	r24, 0x50	; 80
+ b48:	90 e0       	ldi	r25, 0x00	; 0
+ b4a:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b4e:	00 e0       	ldi	r16, 0x00	; 0
+ b50:	10 e0       	ldi	r17, 0x00	; 0
+ b52:	28 e2       	ldi	r18, 0x28	; 40
+ b54:	30 e0       	ldi	r19, 0x00	; 0
+ b56:	44 e6       	ldi	r20, 0x64	; 100
+ b58:	50 e0       	ldi	r21, 0x00	; 0
+ b5a:	6f ea       	ldi	r22, 0xAF	; 175
+ b5c:	70 e0       	ldi	r23, 0x00	; 0
+ b5e:	83 ec       	ldi	r24, 0xC3	; 195
+ b60:	90 e0       	ldi	r25, 0x00	; 0
+ b62:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b66:	22 c0       	rjmp	.+68     	; 0xbac <display_menu+0xec>
+ b68:	00 e0       	ldi	r16, 0x00	; 0
+ b6a:	10 e0       	ldi	r17, 0x00	; 0
+ b6c:	28 e2       	ldi	r18, 0x28	; 40
+ b6e:	30 e0       	ldi	r19, 0x00	; 0
+ b70:	4c e3       	ldi	r20, 0x3C	; 60
+ b72:	50 e0       	ldi	r21, 0x00	; 0
+ b74:	6f ea       	ldi	r22, 0xAF	; 175
+ b76:	70 e0       	ldi	r23, 0x00	; 0
+ b78:	8f e0       	ldi	r24, 0x0F	; 15
+ b7a:	90 e0       	ldi	r25, 0x00	; 0
+ b7c:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b80:	28 e2       	ldi	r18, 0x28	; 40
+ b82:	30 e0       	ldi	r19, 0x00	; 0
+ b84:	4e e6       	ldi	r20, 0x6E	; 110
+ b86:	50 e0       	ldi	r21, 0x00	; 0
+ b88:	6f ea       	ldi	r22, 0xAF	; 175
+ b8a:	70 e0       	ldi	r23, 0x00	; 0
+ b8c:	80 e5       	ldi	r24, 0x50	; 80
+ b8e:	90 e0       	ldi	r25, 0x00	; 0
+ b90:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ b94:	00 ee       	ldi	r16, 0xE0	; 224
+ b96:	17 e0       	ldi	r17, 0x07	; 7
+ b98:	28 e2       	ldi	r18, 0x28	; 40
+ b9a:	30 e0       	ldi	r19, 0x00	; 0
+ b9c:	44 e6       	ldi	r20, 0x64	; 100
+ b9e:	50 e0       	ldi	r21, 0x00	; 0
+ ba0:	6f ea       	ldi	r22, 0xAF	; 175
+ ba2:	70 e0       	ldi	r23, 0x00	; 0
+ ba4:	83 ec       	ldi	r24, 0xC3	; 195
+ ba6:	90 e0       	ldi	r25, 0x00	; 0
+ ba8:	0e 94 30 03 	call	0x660	; 0x660 <glcd_fillRectangle>
+ bac:	0f ef       	ldi	r16, 0xFF	; 255
+ bae:	1f ef       	ldi	r17, 0xFF	; 255
+ bb0:	28 e2       	ldi	r18, 0x28	; 40
+ bb2:	30 e0       	ldi	r19, 0x00	; 0
+ bb4:	4c e3       	ldi	r20, 0x3C	; 60
+ bb6:	50 e0       	ldi	r21, 0x00	; 0
+ bb8:	6f ea       	ldi	r22, 0xAF	; 175
+ bba:	70 e0       	ldi	r23, 0x00	; 0
+ bbc:	8f e0       	ldi	r24, 0x0F	; 15
+ bbe:	90 e0       	ldi	r25, 0x00	; 0
+ bc0:	0e 94 fe 02 	call	0x5fc	; 0x5fc <glcd_rectangle>
+ bc4:	28 e2       	ldi	r18, 0x28	; 40
+ bc6:	30 e0       	ldi	r19, 0x00	; 0
+ bc8:	4e e6       	ldi	r20, 0x6E	; 110
+ bca:	50 e0       	ldi	r21, 0x00	; 0
+ bcc:	6f ea       	ldi	r22, 0xAF	; 175
+ bce:	70 e0       	ldi	r23, 0x00	; 0
+ bd0:	80 e5       	ldi	r24, 0x50	; 80
+ bd2:	90 e0       	ldi	r25, 0x00	; 0
+ bd4:	0e 94 fe 02 	call	0x5fc	; 0x5fc <glcd_rectangle>
+ bd8:	28 e2       	ldi	r18, 0x28	; 40
+ bda:	30 e0       	ldi	r19, 0x00	; 0
+ bdc:	44 e6       	ldi	r20, 0x64	; 100
+ bde:	50 e0       	ldi	r21, 0x00	; 0
+ be0:	6f ea       	ldi	r22, 0xAF	; 175
+ be2:	70 e0       	ldi	r23, 0x00	; 0
+ be4:	83 ec       	ldi	r24, 0xC3	; 195
+ be6:	90 e0       	ldi	r25, 0x00	; 0
+ be8:	0e 94 fe 02 	call	0x5fc	; 0x5fc <glcd_rectangle>
+ bec:	22 e0       	ldi	r18, 0x02	; 2
+ bee:	30 e0       	ldi	r19, 0x00	; 0
+ bf0:	44 eb       	ldi	r20, 0xB4	; 180
+ bf2:	50 e0       	ldi	r21, 0x00	; 0
+ bf4:	64 e1       	ldi	r22, 0x14	; 20
+ bf6:	70 e0       	ldi	r23, 0x00	; 0
+ bf8:	80 e6       	ldi	r24, 0x60	; 96
+ bfa:	90 e0       	ldi	r25, 0x00	; 0
+ bfc:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <glcd_string>
+ c00:	22 e0       	ldi	r18, 0x02	; 2
+ c02:	30 e0       	ldi	r19, 0x00	; 0
+ c04:	44 eb       	ldi	r20, 0xB4	; 180
+ c06:	50 e0       	ldi	r21, 0x00	; 0
+ c08:	65 e5       	ldi	r22, 0x55	; 85
+ c0a:	70 e0       	ldi	r23, 0x00	; 0
+ c0c:	85 e6       	ldi	r24, 0x65	; 101
+ c0e:	90 e0       	ldi	r25, 0x00	; 0
+ c10:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <glcd_string>
+ c14:	22 e0       	ldi	r18, 0x02	; 2
+ c16:	30 e0       	ldi	r19, 0x00	; 0
+ c18:	44 eb       	ldi	r20, 0xB4	; 180
+ c1a:	50 e0       	ldi	r21, 0x00	; 0
+ c1c:	68 ec       	ldi	r22, 0xC8	; 200
+ c1e:	70 e0       	ldi	r23, 0x00	; 0
+ c20:	8e e6       	ldi	r24, 0x6E	; 110
+ c22:	90 e0       	ldi	r25, 0x00	; 0
+ c24:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <glcd_string>
+ c28:	1f 91       	pop	r17
+ c2a:	0f 91       	pop	r16
+ c2c:	08 95       	ret
+
+00000c2e <display_home>:
+ c2e:	0f 93       	push	r16
+ c30:	1f 93       	push	r17
+ c32:	0f ef       	ldi	r16, 0xFF	; 255
+ c34:	1f ef       	ldi	r17, 0xFF	; 255
+ c36:	22 e0       	ldi	r18, 0x02	; 2
+ c38:	30 e0       	ldi	r19, 0x00	; 0
+ c3a:	4f e0       	ldi	r20, 0x0F	; 15
+ c3c:	50 e0       	ldi	r21, 0x00	; 0
+ c3e:	6f e0       	ldi	r22, 0x0F	; 15
+ c40:	70 e0       	ldi	r23, 0x00	; 0
+ c42:	85 e7       	ldi	r24, 0x75	; 117
+ c44:	90 e0       	ldi	r25, 0x00	; 0
+ c46:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <glcd_string>
+ c4a:	1f 91       	pop	r17
+ c4c:	0f 91       	pop	r16
+ c4e:	08 95       	ret
+
+00000c50 <display_current_menu>:
+	
+}
+
+void display_current_menu() {
+	display_menu(currentMenuItem);
+ c50:	80 91 8a 00 	lds	r24, 0x008A	; 0x80008a <currentMenuItem>
+ c54:	90 91 8b 00 	lds	r25, 0x008B	; 0x80008b <currentMenuItem+0x1>
+ c58:	0e 94 60 05 	call	0xac0	; 0xac0 <display_menu>
+	switch(currentMenuItem) {
+ c5c:	80 91 8a 00 	lds	r24, 0x008A	; 0x80008a <currentMenuItem>
+ c60:	90 91 8b 00 	lds	r25, 0x008B	; 0x80008b <currentMenuItem+0x1>
+ c64:	89 2b       	or	r24, r25
+ c66:	11 f4       	brne	.+4      	; 0xc6c <display_current_menu+0x1c>
+		case 0:
+			display_home();
+ c68:	0e 94 17 06 	call	0xc2e	; 0xc2e <display_home>
+ c6c:	08 95       	ret
+
+00000c6e <navigate_left>:
+		break;
+	}
+}
+
+void navigate_left() {
+	if (currentMenuItem == 0) {
+ c6e:	80 91 8a 00 	lds	r24, 0x008A	; 0x80008a <currentMenuItem>
+ c72:	90 91 8b 00 	lds	r25, 0x008B	; 0x80008b <currentMenuItem+0x1>
+ c76:	00 97       	sbiw	r24, 0x00	; 0
+ c78:	39 f4       	brne	.+14     	; 0xc88 <navigate_left+0x1a>
+		currentMenuItem = 2;
+ c7a:	82 e0       	ldi	r24, 0x02	; 2
+ c7c:	90 e0       	ldi	r25, 0x00	; 0
+ c7e:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <currentMenuItem+0x1>
+ c82:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <currentMenuItem>
+ c86:	08 95       	ret
+	} else {
+		currentMenuItem--;
+ c88:	01 97       	sbiw	r24, 0x01	; 1
+ c8a:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <currentMenuItem+0x1>
+ c8e:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <currentMenuItem>
+ c92:	08 95       	ret
+
+00000c94 <navigate_right>:
+	}
+}
+
+void navigate_right() {
+	if (currentMenuItem == 2) {
+ c94:	80 91 8a 00 	lds	r24, 0x008A	; 0x80008a <currentMenuItem>
+ c98:	90 91 8b 00 	lds	r25, 0x008B	; 0x80008b <currentMenuItem+0x1>
+ c9c:	82 30       	cpi	r24, 0x02	; 2
+ c9e:	91 05       	cpc	r25, r1
+ ca0:	29 f4       	brne	.+10     	; 0xcac <navigate_right+0x18>
+		currentMenuItem = 0;
+ ca2:	10 92 8b 00 	sts	0x008B, r1	; 0x80008b <currentMenuItem+0x1>
+ ca6:	10 92 8a 00 	sts	0x008A, r1	; 0x80008a <currentMenuItem>
+ caa:	08 95       	ret
+	} else {
+		currentMenuItem++;
+ cac:	01 96       	adiw	r24, 0x01	; 1
+ cae:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <currentMenuItem+0x1>
+ cb2:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <currentMenuItem>
+ cb6:	08 95       	ret
+
+00000cb8 <main>:
+	}
+}
 
 int main(void)
 {
-	glcd_init();
- 970:	0e 94 9c 03 	call	0x738	; 0x738 <glcd_init>
+	init_lcd();
+ cb8:	0e 94 3c 05 	call	0xa78	; 0xa78 <init_lcd>
 	glcd_led_on();
- 974:	0e 94 d9 01 	call	0x3b2	; 0x3b2 <glcd_led_on>
-	
-    /* Replace with your application code */
-    while (1)
-    {		
-		char *str = "lili is sexy";
-		glcd_string(str, 0, 0, 2, 0x07E0);
- 978:	00 ee       	ldi	r16, 0xE0	; 224
- 97a:	17 e0       	ldi	r17, 0x07	; 7
- 97c:	22 e0       	ldi	r18, 0x02	; 2
- 97e:	30 e0       	ldi	r19, 0x00	; 0
- 980:	40 e0       	ldi	r20, 0x00	; 0
- 982:	50 e0       	ldi	r21, 0x00	; 0
- 984:	60 e0       	ldi	r22, 0x00	; 0
- 986:	70 e0       	ldi	r23, 0x00	; 0
- 988:	80 e6       	ldi	r24, 0x60	; 96
- 98a:	90 e0       	ldi	r25, 0x00	; 0
- 98c:	0e 94 4e 03 	call	0x69c	; 0x69c <glcd_string>
- 990:	f3 cf       	rjmp	.-26     	; 0x978 <main+0x8>
+	glcd_setOrientation(1);	
+}
 
-00000992 <SPI_MasterInit>:
+void init_keypad() {
+	DDRC =  0b00000001;
+ cbc:	81 e0       	ldi	r24, 0x01	; 1
+ cbe:	84 bb       	out	0x14, r24	; 20
+int main(void)
+{
+	init_lcd();
+	init_keypad();
+		
+	display_shell();
+ cc0:	0e 94 45 05 	call	0xa8a	; 0xa8a <display_shell>
+	display_current_menu();
+ cc4:	0e 94 28 06 	call	0xc50	; 0xc50 <display_current_menu>
+    while (1)
+    {	
+		if ((PINC & (1 << PC1))) {
+ cc8:	99 9b       	sbis	0x13, 1	; 19
+ cca:	0d c0       	rjmp	.+26     	; 0xce6 <main+0x2e>
+ ccc:	87 ea       	ldi	r24, 0xA7	; 167
+ cce:	91 e6       	ldi	r25, 0x61	; 97
+ cd0:	01 97       	sbiw	r24, 0x01	; 1
+ cd2:	f1 f7       	brne	.-4      	; 0xcd0 <main+0x18>
+ cd4:	00 c0       	rjmp	.+0      	; 0xcd6 <main+0x1e>
+ cd6:	00 00       	nop
+			_delay_ms(100);
+			while(PINC & (1 << PC1));
+ cd8:	99 99       	sbic	0x13, 1	; 19
+ cda:	fe cf       	rjmp	.-4      	; 0xcd8 <main+0x20>
+			navigate_left();
+ cdc:	0e 94 37 06 	call	0xc6e	; 0xc6e <navigate_left>
+			display_current_menu();
+ ce0:	0e 94 28 06 	call	0xc50	; 0xc50 <display_current_menu>
+ ce4:	f1 cf       	rjmp	.-30     	; 0xcc8 <main+0x10>
+		} else if ((PINC & (1 << PC2))) {
+ ce6:	9a 9b       	sbis	0x13, 2	; 19
+ ce8:	ef cf       	rjmp	.-34     	; 0xcc8 <main+0x10>
+ cea:	87 ea       	ldi	r24, 0xA7	; 167
+ cec:	91 e6       	ldi	r25, 0x61	; 97
+ cee:	01 97       	sbiw	r24, 0x01	; 1
+ cf0:	f1 f7       	brne	.-4      	; 0xcee <main+0x36>
+ cf2:	00 c0       	rjmp	.+0      	; 0xcf4 <main+0x3c>
+ cf4:	00 00       	nop
+			_delay_ms(100);
+			while(PINC & (1 << PC2));
+ cf6:	9a 99       	sbic	0x13, 2	; 19
+ cf8:	fe cf       	rjmp	.-4      	; 0xcf6 <main+0x3e>
+			navigate_right();
+ cfa:	0e 94 4a 06 	call	0xc94	; 0xc94 <navigate_right>
+			display_current_menu();
+ cfe:	0e 94 28 06 	call	0xc50	; 0xc50 <display_current_menu>
+ d02:	e2 cf       	rjmp	.-60     	; 0xcc8 <main+0x10>
+
+00000d04 <SPI_MasterInit>:
 1 1 1 fosc/64
 */
 
 void SPI_MasterInit(void)
 {
 	DDR_SPI = (1<<DD_MOSI)|(1<<DD_SCK)|(1<<DD_SS); // MOSI, SCK, SS su output, svi ostali input, SS kao izlaz treba za GLCD
- 992:	8c e2       	ldi	r24, 0x2C	; 44
- 994:	87 bb       	out	0x17, r24	; 23
+ d04:	8c e2       	ldi	r24, 0x2C	; 44
+ d06:	87 bb       	out	0x17, r24	; 23
 	SPCR = (1<<SPE)|(1<<MSTR);			// enable SPI, SPI master
- 996:	80 e5       	ldi	r24, 0x50	; 80
- 998:	8d b9       	out	0x0d, r24	; 13
+ d08:	80 e5       	ldi	r24, 0x50	; 80
+ d0a:	8d b9       	out	0x0d, r24	; 13
 	SPSR = (1<<SPI2X);				// clock rate fsck/2
- 99a:	81 e0       	ldi	r24, 0x01	; 1
- 99c:	8e b9       	out	0x0e, r24	; 14
- 99e:	08 95       	ret
+ d0c:	81 e0       	ldi	r24, 0x01	; 1
+ d0e:	8e b9       	out	0x0e, r24	; 14
+ d10:	08 95       	ret
 
-000009a0 <SPI_MasterTransmit>:
+00000d12 <SPI_MasterTransmit>:
 }
 
 uint8_t SPI_MasterTransmit(uint8_t cData)
 {
 	/* Start transmission */
 	SPDR = cData;
- 9a0:	8f b9       	out	0x0f, r24	; 15
+ d12:	8f b9       	out	0x0f, r24	; 15
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)))
- 9a2:	77 9b       	sbis	0x0e, 7	; 14
- 9a4:	fe cf       	rjmp	.-4      	; 0x9a2 <SPI_MasterTransmit+0x2>
+ d14:	77 9b       	sbis	0x0e, 7	; 14
+ d16:	fe cf       	rjmp	.-4      	; 0xd14 <SPI_MasterTransmit+0x2>
 	;
 	return SPDR;	// Za GLCD
- 9a6:	8f b1       	in	r24, 0x0f	; 15
+ d18:	8f b1       	in	r24, 0x0f	; 15
 }
- 9a8:	08 95       	ret
+ d1a:	08 95       	ret
 
-000009aa <_exit>:
- 9aa:	f8 94       	cli
+00000d1c <_exit>:
+ d1c:	f8 94       	cli
 
-000009ac <__stop_program>:
- 9ac:	ff cf       	rjmp	.-2      	; 0x9ac <__stop_program>
+00000d1e <__stop_program>:
+ d1e:	ff cf       	rjmp	.-2      	; 0xd1e <__stop_program>
